@@ -1,14 +1,17 @@
-console.log(process.env.NODE_ENV);
-
 var express = require("express");
 var http = require('http');
 var socket_io = require('socket.io');
 
 var config = require("./config").get();
 
-var app = express()
-  , server = http.createServer(app)
-  , io = socket_io.listen(server);
+var app = express();
+var server = http.createServer(app);
+var io = socket_io.listen(server);
+
+io.configure(function () { 
+  io.set("transports", ["xhr-polling"]); 
+  io.set("polling duration", 10); 
+});
 
 console.log('Listening on port',config.port);  
 server.listen(config.port);
