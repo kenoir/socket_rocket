@@ -12,7 +12,7 @@ module.exports = {
 
 var all_config = {
     production: {
-        port: 80
+        port: 8080
     },
     dev: {
         port: 8181
