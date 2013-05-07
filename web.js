@@ -1,14 +1,16 @@
+console.log(process.env.NODE_ENV);
+
 var express = require("express");
 var http = require('http');
 var socket_io = require('socket.io');
 
-var config = require("./config");
+var config = require("./config").get();
 
 var app = express()
   , server = http.createServer(app)
   , io = socket_io.listen(server);
 
-server.listen(8181);
+server.listen(config.port);
 
 app.get('/', function (req, res) {
   res.sendfile(__dirname + '/index.html');
