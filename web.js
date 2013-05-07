@@ -10,6 +10,7 @@ var app = express()
   , server = http.createServer(app)
   , io = socket_io.listen(server);
 
+console.log('Listening on port',config.port);  
 server.listen(config.port);
 
 app.get('/', function (req, res) {
